@@ -6,7 +6,7 @@ class PostCmt extends dd.Table {
   id = dd.pk();
   user_id = user.id;
   target_id = post.id;
-  content = dd.text().notNull;
+  content = dd.text();
 }
 
 export default dd.table(PostCmt);

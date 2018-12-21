@@ -1,6 +1,6 @@
 import * as mr from 'mingru';
-import actions from './actions';
+import userTA from './models/userTA';
 
 (async () => {
-  await mr.build(actions, new mr.MySQL(), './build/');
+  await mr.build([userTA], new mr.MySQL(), './build/');
 })();
