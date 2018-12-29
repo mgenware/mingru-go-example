@@ -12,10 +12,10 @@ buffer-from@^1.0.0, buffer-from@^1.1.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-dd-models@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/dd-models/-/dd-models-0.5.1.tgz#f71f4842c478790d718abd6e214e86898c7767c6"
-  integrity sha512-apR4tKkJjRJLpKiqPtgpDltMWyolUFMjUfFMPv9ZAiWbIYV1ARbez+gdwYnnQUw49fIPk1uD96HSkHbu9YioUg==
+dd-models@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/dd-models/-/dd-models-0.7.0.tgz#becbe1f99a4616b588616643d59d8cee7f7e7205"
+  integrity sha512-ePMpDtdYOQfX7KoGIlP/Jz/Pm/pEz78YpWr5iaE9zBlPovorKe/srobnNsiosguZbWds/C+MAQTOVZKBiSQhYg==
   dependencies:
     lodash.camelcase "^4.3.0"
     lodash.snakecase "^4.1.1"
@@ -62,12 +62,13 @@ mingru-tsconfig@^1.1.0:
   resolved "https://registry.yarnpkg.com/mingru-tsconfig/-/mingru-tsconfig-1.1.0.tgz#c66834ab2ec34a5bfe3603d651b3a786e0b5f9f2"
   integrity sha512-PuLqyM/5ZYE8G1c9dbKDhsA39dVlCkJu6/xOuZvH4YOhmKMXs/okURIBItduX1nrDTBadiVTV5pf7uTDRzUO+g==
 
-mingru@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.1.4.tgz#31ca4d7cf575c0b07dd001c0d461ccf5ce398f94"
-  integrity sha512-2raIFrc9qycVWqhiNfY7Gsp4+DVvkF5ofoAuS6TC2J2uJhVpM67dljF0iBxbvvrjkWKdZx3sGCh6aOU42Oh5Ew==
+mingru@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.2.2.tgz#4aed19304d5cd6b91d1e474658f84b7ff48130fe"
+  integrity sha512-NybPMwyzZmluVD/d0klEQ535ZZBqtHyes12FuuxCDS5dNzP1nt0VoxQLp8l7akm+nb0g+aSI69DdjvgGeBYN1w==
   dependencies:
     m-fs "^2.0.0"
+    sql-escape-string "^1.1.0"
     throw-if-arg-empty "^1.0.1"
     to-type-string "^1.0.0"
 
@@ -110,6 +111,11 @@ source-map@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+sql-escape-string@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sql-escape-string/-/sql-escape-string-1.1.0.tgz#fe744b8514868c0eb4bfb9e4a989271d40f30eb9"
+  integrity sha1-/nRLhRSGjA60v7nkqYknHUDzDrk=
 
 throw-if-arg-empty@^1.0.1:
   version "1.0.1"
