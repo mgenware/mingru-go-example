@@ -2,7 +2,7 @@ import * as dd from 'dd-models';
 
 class User extends dd.Table {
   id = dd.pk();
-  name = dd.varChar(200);
+  name = dd.varChar(100);
   sig = dd.text().nullable;
 }
 
