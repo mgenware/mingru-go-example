@@ -6,16 +6,16 @@ const userTA = dd.actions(user);
 userTA.select('UserProfile', user.id, user.name, user.sig).byID();
 // Select all user profiles
 userTA.selectAll('AllUserProfiles', user.id, user.name, user.sig);
-// Select a single field by ID
+// Select the single sig field by ID
 userTA.selectField('Sig', user.sig).byID();
 
-// Update a row
+// Update an user profile by ID
 userTA
   .updateOne('UserProfile')
   .setInputs(user.name, user.sig)
   .byID();
 
-// Delete a row by ID
+// Delete an user by ID
 userTA.deleteOne('ByID').byID();
 
 export default userTA;
