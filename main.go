@@ -9,15 +9,19 @@ import (
 )
 
 func main() {
+	// Open a DB connection on localhost
 	db, err := sql.Open("mysql", "root:123456@/test")
 	if err != nil {
 		panic(err)
 	}
 
+	// Select all user profiles
 	users, err := da.User.SelectAllUserProfiles(db)
 	if err != nil {
 		panic(err)
 	}
+
+	// Loop through the result
 	for _, u := range users {
 		fmt.Printf("ID: %v, Name: %v, Sig: %v\n", u.UserID, u.UserName, u.UserSig)
 	}
