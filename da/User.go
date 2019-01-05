@@ -92,3 +92,21 @@ func (da *TableTypeUser) DeleteByID(queryable sqlx.Queryable, userID uint64) err
 	result, err := queryable.Exec("DELETE FROM `user` WHERE `id` = ?", userID)
 	return sqlx.CheckOneRowAffectedWithError(result, err)
 }
+
+// DeleteByName ...
+func (da *TableTypeUser) DeleteByName(queryable sqlx.Queryable, userName string) (int, error) {
+	result, err := queryable.Exec("DELETE FROM `user` WHERE `name` = ?", userName)
+	return sqlx.GetRowsAffectedIntWithError(result, err)
+}
+
+// DeleteAll ...
+func (da *TableTypeUser) DeleteAll(queryable sqlx.Queryable) (int, error) {
+	result, err := queryable.Exec("DELETE FROM `user`")
+	return sqlx.GetRowsAffectedIntWithError(result, err)
+}
+
+// InsertUser ...
+func (da *TableTypeUser) InsertUser(queryable sqlx.Queryable, userName string, userAge int) (uint64, error) {
+	result, err := queryable.Exec("INSERT INTO `user` (`sig`, `name`, `age`) VALUES ('', ?, ?)", userName, userAge)
+	return sqlx.GetLastInsertIDUint64WithError(result, err)
+}

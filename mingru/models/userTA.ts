@@ -21,4 +21,16 @@ userTA.updateAll('AllSigToEmpty').set(user.sig, dd.sql`''`);
 // Delete an user by ID
 userTA.deleteOne('ByID').byID();
 
+// Delete all users by a specified name
+userTA.delete('ByName').where(user.name.isEqualToInput());
+
+// Delete all users
+userTA.deleteAll('All');
+
+// Insert a new user
+userTA
+  .insertOne('User')
+  .set(user.sig, dd.sql`''`)
+  .setInputs(user.name, user.age);
+
 export default userTA;
