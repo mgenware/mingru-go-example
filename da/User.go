@@ -81,6 +81,12 @@ func (da *TableTypeUser) UpdateUserProfile(queryable sqlx.Queryable, userID uint
 	return sqlx.CheckOneRowAffectedWithError(result, err)
 }
 
+// UpdateAllSigToEmpty ...
+func (da *TableTypeUser) UpdateAllSigToEmpty(queryable sqlx.Queryable) (int, error) {
+	result, err := queryable.Exec("UPDATE `user` SET `sig` = ''")
+	return sqlx.GetRowsAffectedIntWithError(result, err)
+}
+
 // DeleteByID ...
 func (da *TableTypeUser) DeleteByID(queryable sqlx.Queryable, userID uint64) error {
 	result, err := queryable.Exec("DELETE FROM `user` WHERE `id` = ?", userID)

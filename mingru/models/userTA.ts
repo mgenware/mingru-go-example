@@ -15,6 +15,9 @@ userTA
   .setInputs(user.name, user.sig)
   .byID();
 
+// Update all user.sig to an empty string
+userTA.updateAll('AllSigToEmpty').set(user.sig, dd.sql`''`);
+
 // Delete an user by ID
 userTA.deleteOne('ByID').byID();
 
