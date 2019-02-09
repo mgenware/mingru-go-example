@@ -13,7 +13,7 @@ A Go example demonstrating mingru.
 * `dep ensure` installs dependencies
 * `go run main.go` runs the example
 
-### To set up mingru and regenerated code
+### To set up mingru and regenerate code
 * `cd mingru` navigates to the `mingru` directory
 * `yarn` installs dependencies
-* `yarn build` generated code to `../da` directory
+* `yarn build` generates code to `../da` directory
