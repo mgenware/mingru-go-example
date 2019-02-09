@@ -22,7 +22,7 @@ func main() {
 	}
 
 	// Loop through the result
-	for _, u := range users {
-		fmt.Printf("ID: %v, Name: %v, Sig: %v\n", u.UserID, u.UserName, u.UserSig)
+	for _, user := range users {
+		fmt.Printf("ID: %v, Name: %v, Sig: %v\n", user.ID, user.Name, user.Sig)
 	}
 }
