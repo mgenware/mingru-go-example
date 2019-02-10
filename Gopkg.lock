@@ -10,12 +10,12 @@
   version = "v1.4.1"
 
 [[projects]]
-  digest = "1:80be4802ec3061d7b42728ace258e8fcef71088756df5d210f71b683e5b2ab94"
+  digest = "1:ab177e4575cc9b66c61b859fc708206a889f488344292eb981a3bae2c0c27d44"
   name = "github.com/mgenware/go-packagex"
-  packages = ["database/sqlx"]
+  packages = ["dbx"]
   pruneopts = "UT"
-  revision = "3193769f2df7cea57232ead1c6ae88f1760f8dd5"
-  version = "2.0.0"
+  revision = "f1bdbc477db7ec6fcf67654c2a96d6457296b9ea"
+  version = "v3.0.1"
 
 [[projects]]
   digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
@@ -30,7 +30,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/go-sql-driver/mysql",
-    "github.com/mgenware/go-packagex/database/sqlx",
+    "github.com/mgenware/go-packagex/dbx",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
