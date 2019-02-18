@@ -3,14 +3,15 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"mingru-go-example/da"
+
+	"github.com/mgenware/mingru-go-example/da"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	// Open a DB connection on localhost
-	db, err := sql.Open("mysql", "root:123456@/test")
+	db, err := sql.Open("mysql", "root:123456@/mingru_test")
 	if err != nil {
 		panic(err)
 	}
