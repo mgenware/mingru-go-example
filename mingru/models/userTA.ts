@@ -6,7 +6,7 @@ export class UserTA extends dd.TA {
   selectUserProfile = dd.select(user.id, user.name, user.sig).byID();
   // Select all user profiles
   selectAllUserProfiles = dd.selectAll(user.id, user.name, user.sig);
-  // Select the single sig field by ID
+  // Select a single user signature field by ID
   selectSig = dd.selectField(user.sig).byID();
 
   // Update an user profile by ID
@@ -15,7 +15,7 @@ export class UserTA extends dd.TA {
     .setInputs(user.name, user.sig)
     .byID();
 
-  // Update all user.sig to an empty string
+  // Update all user signatures to an empty string
   updateAllSigToEmpty = dd.unsafeUpdateAll().set(user.sig, dd.sql`''`);
 
   // Delete an user by ID
