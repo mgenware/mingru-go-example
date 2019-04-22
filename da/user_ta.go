@@ -6,7 +6,7 @@
 package da
 
 import (
-	"github.com/mgenware/go-packagex/dbx"
+	"github.com/mgenware/go-packagex/v5/dbx"
 )
 
 // TableTypeUser ...
@@ -70,7 +70,7 @@ func (da *TableTypeUser) SelectSig(queryable dbx.Queryable, id uint64) (*string,
 	var result *string
 	err := queryable.QueryRow("SELECT `sig` FROM `user` WHERE `id` = ?", id).Scan(&result)
 	if err != nil {
-		return nil, err
+		return result, err
 	}
 	return result, nil
 }
