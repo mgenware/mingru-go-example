@@ -1,10 +1,10 @@
-import * as mr from 'mingru';
+import * as mr from "mingru";
 // Import model actions
-import userTA from './models/userTA';
+import employeeTA from "./models/employeeTA";
 
 (async () => {
-  const actions = [userTA];
+  const actions = [employeeTA];
   const dialect = new mr.MySQL();
   // Build Go code to '../da/` directory
-  await mr.build(actions, dialect, '../da/');
+  await mr.build(actions, dialect, "../da/", { cleanBuild: true });
 })();
