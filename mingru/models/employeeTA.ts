@@ -3,11 +3,11 @@ import t from './employee';
 
 const employeeColumns = [
   t.id,
-  t.first_name,
-  t.last_name,
+  t.firstName,
+  t.lastName,
   t.gender,
-  t.birth_date,
-  t.hire_date,
+  t.birthDate,
+  t.hireDate,
 ];
 
 export class EmployeeTA extends dd.TA {
@@ -16,19 +16,19 @@ export class EmployeeTA extends dd.TA {
   // Select all employees
   selectAll = dd.selectAll(...employeeColumns);
   // Select an employee birth date by ID
-  selectSig = dd.selectField(t.birth_date).byID();
+  selectSig = dd.selectField(t.birthDate).byID();
 
   // Update an employee name by ID
   updateName = dd
     .updateOne()
-    .setInputs(t.first_name, t.last_name)
+    .setInputs(t.firstName, t.lastName)
     .byID();
 
   // Delete an employee by ID
   deleteByID = dd.deleteOne().byID();
 
   // Delete all employees by a criteria
-  deleteByBirthDate = dd.deleteSome().where(t.birth_date.isEqualToInput());
+  deleteByBirthDate = dd.deleteSome().where(t.birthDate.isEqualToInput());
 
   // Delete all employees
   deleteAll = dd.unsafeDeleteAll();
