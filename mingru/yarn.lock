@@ -94,10 +94,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-dd-models@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/dd-models/-/dd-models-0.13.0.tgz#67df88818d7c5c2472f2e6e09fbb8eb6feea9044"
-  integrity sha512-b+qFvYBrcU4h0QgbBVL0Asc6EbAbsU93GVu5IqFRsyDX3qMBw3VD0sBIQPu8do8FsyVBjt1IQ4xbMgWnB2bGzA==
+dd-models@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/dd-models/-/dd-models-0.14.0.tgz#288554c2ab26fa3886c4c4373f9352e4375ecf1c"
+  integrity sha512-3rozUL8grdyfKO1kpoKmKYFbvGQXNHXzde8HZSLZDiCH0SG3BDEzNCwZYheDrxXNXUgKkUjJ4pek8e87gKyPHA==
   dependencies:
     lodash.camelcase "^4.3.0"
     lodash.snakecase "^4.1.1"
@@ -227,10 +227,10 @@ mingru-tsconfig@^2.0.0:
   resolved "https://registry.yarnpkg.com/mingru-tsconfig/-/mingru-tsconfig-2.0.0.tgz#9cf8ea84d2c0d5b91480b88700f31187b473c26a"
   integrity sha512-AnSwR7zgwlveL+6Cf+TJtjm3HVwSvuIO2Kw1IhkiDMJPJMK/24VLtN6GMrGOnfFFdnbLwztx97ZbIuCr/+2hMA==
 
-mingru@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.7.0.tgz#d96fc974aada444e55d1c96c876bd6bcb04b70c2"
-  integrity sha512-EIMxPxS1D9j1J9q0p28Zv5G6A6hfWtzSGMTsVh2e8bY28rB2ewo5+CBjTZzrMB8pTYgsk0orJKHnFA0IOWI+0w==
+mingru@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.7.2.tgz#8bfd7e1689311d90c4ca616ce88072850dd91c8d"
+  integrity sha512-ukOKY17Fcl/qoj1j0VEdz8fnfmBRM9WB3rlemO2BxJ+XQ6YDMxHJCInlI1w4l9m469I9MRf6y5sQ6DFGiWruRA==
   dependencies:
     chalk "^2.4.2"
     del "^4.1.1"

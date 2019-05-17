@@ -12,10 +12,9 @@ A Go example demonstrating mingru.
 
 ### To run the example
 
-- You need the [employees sample database](https://github.com/datacharmer/test_db)
-- `dep ensure` installs dependencies
-- `go run main.go` runs the example
-- The example tries to connect local MySQL instance with a password of `123456`
+- Install the [employees sample database](https://github.com/datacharmer/test_db)
+- Make sure connection to local MySQL instance with `root:123456@/employees?parseTime=True` succeeds
+- Run `go run main.go`
 
 ### To set up mingru and regenerate code
 
