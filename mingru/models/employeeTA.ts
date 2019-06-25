@@ -1,20 +1,11 @@
 import * as dd from 'dd-models';
 import t from './employee';
 
-const employeeColumns = [
-  t.id,
-  t.firstName,
-  t.lastName,
-  t.gender,
-  t.birthDate,
-  t.hireDate,
-];
-
 export class EmployeeTA extends dd.TA {
   // Select an employee by ID
-  selectByID = dd.select(...employeeColumns).byID();
+  selectByID = dd.select().byID();
   // Select all employees
-  selectAll = dd.selectAll(...employeeColumns);
+  selectAll = dd.selectRows();
   // Select an employee birth date by ID
   selectSig = dd.selectField(t.birthDate).byID();
 
@@ -34,7 +25,7 @@ export class EmployeeTA extends dd.TA {
   deleteAll = dd.unsafeDeleteAll();
 
   // Insert a new employee
-  insertUser = dd.insertOne().setInputs(...employeeColumns);
+  insertUser = dd.insertOne().setInputs();
 }
 
 export default dd.ta(t, EmployeeTA);
