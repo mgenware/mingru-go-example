@@ -18,14 +18,14 @@ var Dept = &TableTypeDept{}
 
 // ------------ Actions ------------
 
-// DeptTableSelectPagedResult ...
-type DeptTableSelectPagedResult struct {
+// DeptTableSelectPageResult ...
+type DeptTableSelectPageResult struct {
 	ID   string
 	Name string
 }
 
-// SelectPaged ...
-func (da *TableTypeDept) SelectPaged(queryable dbx.Queryable, page int, pageSize int) ([]*DeptTableSelectPagedResult, bool, error) {
+// SelectPage ...
+func (da *TableTypeDept) SelectPage(queryable dbx.Queryable, page int, pageSize int) ([]*DeptTableSelectPageResult, bool, error) {
 	limit := pageSize + 1
 	offset := (page - 1) * pageSize
 	max := pageSize
@@ -33,13 +33,13 @@ func (da *TableTypeDept) SelectPaged(queryable dbx.Queryable, page int, pageSize
 	if err != nil {
 		return nil, false, err
 	}
-	result := make([]*DeptTableSelectPagedResult, 0, limit)
+	result := make([]*DeptTableSelectPageResult, 0, limit)
 	itemCounter := 0
 	defer rows.Close()
 	for rows.Next() {
 		itemCounter++
 		if itemCounter <= max {
-			item := &DeptTableSelectPagedResult{}
+			item := &DeptTableSelectPageResult{}
 			err = rows.Scan(&item.ID, &item.Name)
 			if err != nil {
 				return nil, false, err
