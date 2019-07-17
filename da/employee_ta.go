@@ -77,6 +77,43 @@ func (da *TableTypeEmployee) SelectAll(queryable dbx.Queryable) ([]*EmployeeTabl
 	return result, nil
 }
 
+// EmployeeTableSelectAllWithLimitResult ...
+type EmployeeTableSelectAllWithLimitResult struct {
+	ID        int
+	FirstName string
+	LastName  string
+	Gender    string
+	BirthDate time.Time
+	HireDate  time.Time
+}
+
+// SelectAllWithLimit ...
+func (da *TableTypeEmployee) SelectAllWithLimit(queryable dbx.Queryable, limit int, offset int, max int) ([]*EmployeeTableSelectAllWithLimitResult, int, error) {
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` LIMIT ? OFFSET ?", limit, offset)
+	if err != nil {
+		return nil, 0, err
+	}
+	result := make([]*EmployeeTableSelectAllWithLimitResult, 0, limit)
+	itemCounter := 0
+	defer rows.Close()
+	for rows.Next() {
+		itemCounter++
+		if itemCounter <= max {
+			item := &EmployeeTableSelectAllWithLimitResult{}
+			err = rows.Scan(&item.ID, &item.FirstName, &item.LastName, &item.Gender, &item.BirthDate, &item.HireDate)
+			if err != nil {
+				return nil, 0, err
+			}
+			result = append(result, item)
+		}
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, 0, err
+	}
+	return result, itemCounter, nil
+}
+
 // EmployeeTableSelectByIDResult ...
 type EmployeeTableSelectByIDResult struct {
 	ID        int
@@ -95,6 +132,46 @@ func (da *TableTypeEmployee) SelectByID(queryable dbx.Queryable, id int) (*Emplo
 		return nil, err
 	}
 	return result, nil
+}
+
+// EmployeeTableSelectPagedResult ...
+type EmployeeTableSelectPagedResult struct {
+	ID        int
+	FirstName string
+	LastName  string
+	Gender    string
+	BirthDate time.Time
+	HireDate  time.Time
+}
+
+// SelectPaged ...
+func (da *TableTypeEmployee) SelectPaged(queryable dbx.Queryable, page int, pageSize int) ([]*EmployeeTableSelectPagedResult, bool, error) {
+	limit := pageSize + 1
+	offset := (page - 1) * pageSize
+	max := pageSize
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` LIMIT ? OFFSET ?", limit, offset)
+	if err != nil {
+		return nil, false, err
+	}
+	result := make([]*EmployeeTableSelectPagedResult, 0, limit)
+	itemCounter := 0
+	defer rows.Close()
+	for rows.Next() {
+		itemCounter++
+		if itemCounter <= max {
+			item := &EmployeeTableSelectPagedResult{}
+			err = rows.Scan(&item.ID, &item.FirstName, &item.LastName, &item.Gender, &item.BirthDate, &item.HireDate)
+			if err != nil {
+				return nil, false, err
+			}
+			result = append(result, item)
+		}
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, false, err
+	}
+	return result, itemCounter > len(result), nil
 }
 
 // SelectSig ...

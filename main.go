@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
 	"github.com/mgenware/mingru-go-example/da"
 
@@ -16,13 +17,14 @@ func main() {
 		panic(err)
 	}
 
-	// Select all user profiles
-	users, err := da.Employee.SelectAll(db)
+	// Select some paged users
+	users, hasNext, err := da.Employee.SelectPaged(db, 2, 10)
 	if err != nil {
 		panic(err)
 	}
 
 	// Loop through the result
+	log.Printf("hasNext: %v\n", hasNext)
 	for _, user := range users {
 		fmt.Printf("ID: %v, Name: %v %v, Gender: %v, Dates: %v/%v\n", user.ID, user.FirstName, user.LastName, user.Gender, user.BirthDate, user.HireDate)
 	}

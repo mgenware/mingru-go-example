@@ -6,6 +6,10 @@ export class EmployeeTA extends dd.TA {
   selectByID = dd.select().byID();
   // Select all employees
   selectAll = dd.selectRows();
+  // Select all employees with a limit
+  selectAllWithLimit = dd.selectRows().limit();
+  // Select paged employees
+  selectPaged = dd.selectPage();
   // Select an employee birth date by ID
   selectSig = dd.selectField(t.birthDate).byID();
 
