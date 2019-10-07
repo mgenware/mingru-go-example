@@ -20,12 +20,6 @@ var Employee = &TableTypeEmployee{}
 
 // ------------ Actions ------------
 
-// DeleteAll ...
-func (da *TableTypeEmployee) DeleteAll(queryable dbx.Queryable) (int, error) {
-	result, err := queryable.Exec("DELETE FROM `employees`")
-	return dbx.GetRowsAffectedIntWithError(result, err)
-}
-
 // DeleteByBirthDate ...
 func (da *TableTypeEmployee) DeleteByBirthDate(queryable dbx.Queryable, birthDate time.Time) (int, error) {
 	result, err := queryable.Exec("DELETE FROM `employees` WHERE `birth_date` = ?", birthDate)
@@ -39,9 +33,9 @@ func (da *TableTypeEmployee) DeleteByID(queryable dbx.Queryable, id int) error {
 }
 
 // InsertUser ...
-func (da *TableTypeEmployee) InsertUser(queryable dbx.Queryable, firstName string, lastName string, gender string, birthDate time.Time, hireDate time.Time) (uint64, error) {
-	result, err := queryable.Exec("INSERT INTO `employees` (`first_name`, `last_name`, `gender`, `birth_date`, `hire_date`) VALUES (?, ?, ?, ?, ?)", firstName, lastName, gender, birthDate, hireDate)
-	return dbx.GetLastInsertIDUint64WithError(result, err)
+func (da *TableTypeEmployee) InsertUser(queryable dbx.Queryable, id int, firstName string, lastName string, gender string, birthDate time.Time, hireDate time.Time) error {
+	_, err := queryable.Exec("INSERT INTO `employees` (`emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date`) VALUES (?, ?, ?, ?, ?, ?)", id, firstName, lastName, gender, birthDate, hireDate)
+	return err
 }
 
 // EmployeeTableSelectAllResult ...
@@ -56,7 +50,7 @@ type EmployeeTableSelectAllResult struct {
 
 // SelectAll ...
 func (da *TableTypeEmployee) SelectAll(queryable dbx.Queryable) ([]*EmployeeTableSelectAllResult, error) {
-	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees`")
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date`")
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +83,7 @@ type EmployeeTableSelectAllWithLimitResult struct {
 
 // SelectAllWithLimit ...
 func (da *TableTypeEmployee) SelectAllWithLimit(queryable dbx.Queryable, limit int, offset int, max int) ([]*EmployeeTableSelectAllWithLimitResult, int, error) {
-	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` LIMIT ? OFFSET ?", limit, offset)
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date` LIMIT ? OFFSET ?", limit, offset)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -149,7 +143,7 @@ func (da *TableTypeEmployee) SelectPaged(queryable dbx.Queryable, page int, page
 	limit := pageSize + 1
 	offset := (page - 1) * pageSize
 	max := pageSize
-	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` LIMIT ? OFFSET ?", limit, offset)
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date` LIMIT ? OFFSET ?", limit, offset)
 	if err != nil {
 		return nil, false, err
 	}

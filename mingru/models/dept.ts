@@ -1,4 +1,4 @@
-import * as dd from 'dd-models';
+import * as dd from 'mingru-models';
 
 class Dept extends dd.Table {
   id = dd.pk(dd.char(4)).setDBName('dept_no');
