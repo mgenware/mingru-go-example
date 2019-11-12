@@ -1,8 +1,8 @@
-import * as dd from 'mingru-models';
+import * as mm from 'mingru-models';
 
-class Dept extends dd.Table {
-  id = dd.pk(dd.char(4)).setDBName('dept_no');
-  name = dd.varChar(40).setDBName('dept_name');
+class Dept extends mm.Table {
+  id = mm.pk(mm.char(4)).setDBName('dept_no');
+  name = mm.varChar(40).setDBName('dept_name');
 }
 
-export default dd.table(Dept, 'departments');
+export default mm.table(Dept, 'departments');
