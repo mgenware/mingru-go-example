@@ -49,26 +49,33 @@ type EmployeeTableSelectAllResult struct {
 }
 
 // SelectAll ...
-func (da *TableTypeEmployee) SelectAll(queryable dbx.Queryable) ([]*EmployeeTableSelectAllResult, error) {
-	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date`")
+func (da *TableTypeEmployee) SelectAll(queryable dbx.Queryable, page int, pageSize int) ([]*EmployeeTableSelectAllResult, bool, error) {
+	limit := pageSize + 1
+	offset := (page - 1) * pageSize
+	max := pageSize
+	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date` LIMIT ? OFFSET ?", limit, offset)
 	if err != nil {
-		return nil, err
+		return nil, false, err
 	}
-	result := make([]*EmployeeTableSelectAllResult, 0)
+	result := make([]*EmployeeTableSelectAllResult, 0, limit)
+	itemCounter := 0
 	defer rows.Close()
 	for rows.Next() {
-		item := &EmployeeTableSelectAllResult{}
-		err = rows.Scan(&item.ID, &item.FirstName, &item.LastName, &item.Gender, &item.BirthDate, &item.HireDate)
-		if err != nil {
-			return nil, err
+		itemCounter++
+		if itemCounter <= max {
+			item := &EmployeeTableSelectAllResult{}
+			err = rows.Scan(&item.ID, &item.FirstName, &item.LastName, &item.Gender, &item.BirthDate, &item.HireDate)
+			if err != nil {
+				return nil, false, err
+			}
+			result = append(result, item)
 		}
-		result = append(result, item)
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, err
+		return nil, false, err
 	}
-	return result, nil
+	return result, itemCounter > len(result), nil
 }
 
 // EmployeeTableSelectAllWithLimitResult ...
@@ -82,10 +89,13 @@ type EmployeeTableSelectAllWithLimitResult struct {
 }
 
 // SelectAllWithLimit ...
-func (da *TableTypeEmployee) SelectAllWithLimit(queryable dbx.Queryable, limit int, offset int, max int) ([]*EmployeeTableSelectAllWithLimitResult, int, error) {
+func (da *TableTypeEmployee) SelectAllWithLimit(queryable dbx.Queryable, page int, pageSize int) ([]*EmployeeTableSelectAllWithLimitResult, bool, error) {
+	limit := pageSize + 1
+	offset := (page - 1) * pageSize
+	max := pageSize
 	rows, err := queryable.Query("SELECT `emp_no`, `first_name`, `last_name`, `gender`, `birth_date`, `hire_date` FROM `employees` ORDER BY `hire_date` LIMIT ? OFFSET ?", limit, offset)
 	if err != nil {
-		return nil, 0, err
+		return nil, false, err
 	}
 	result := make([]*EmployeeTableSelectAllWithLimitResult, 0, limit)
 	itemCounter := 0
@@ -96,16 +106,16 @@ func (da *TableTypeEmployee) SelectAllWithLimit(queryable dbx.Queryable, limit i
 			item := &EmployeeTableSelectAllWithLimitResult{}
 			err = rows.Scan(&item.ID, &item.FirstName, &item.LastName, &item.Gender, &item.BirthDate, &item.HireDate)
 			if err != nil {
-				return nil, 0, err
+				return nil, false, err
 			}
 			result = append(result, item)
 		}
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, 0, err
+		return nil, false, err
 	}
-	return result, itemCounter, nil
+	return result, itemCounter > len(result), nil
 }
 
 // EmployeeTableSelectByIDResult ...

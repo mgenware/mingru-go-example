@@ -5,12 +5,9 @@ export class EmployeeTA extends mm.TableActions {
   // Select an employee by ID.
   selectByID = mm.select().byID();
   // Select all employees.
-  selectAll = mm.selectRows().orderByAsc(t.hireDate);
+  selectAll = mm.selectPage().orderByAsc(t.hireDate);
   // Select all employees with a limit.
-  selectAllWithLimit = mm
-    .selectRows()
-    .limit()
-    .orderByAsc(t.hireDate);
+  selectAllWithLimit = mm.selectPage().orderByAsc(t.hireDate);
   // Select paged employees.
   selectPaged = mm.selectPage().orderByAsc(t.hireDate);
   // Select an employee birth date by ID.
