@@ -320,10 +320,10 @@ micromatch@^4.0.2:
     braces "^3.0.1"
     picomatch "^2.0.5"
 
-mingru-models@^0.32.0:
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/mingru-models/-/mingru-models-0.32.0.tgz#3cbe48aec1cf17a4e25ccc082050eec8d614edad"
-  integrity sha512-0VVdxyBLR3FhZKBCrWoI52McL012g+omsTTxxbxBnOoxc8Lhj/D2UV0gVCQ3xne4+T39zLE4SWuEHOi9OMCAQA==
+mingru-models@^0.33.1:
+  version "0.33.1"
+  resolved "https://registry.yarnpkg.com/mingru-models/-/mingru-models-0.33.1.tgz#27df2a238571986593fe9a6d9711398efea078e6"
+  integrity sha512-q+WJWxVyYuvn6AIqZeiXmsOKSeSfSP+W2MFVCVw1YqUwbStS2jLQgQ928nfMMHxeL/mYk5yUWI8Cg81M7u7lew==
   dependencies:
     lodash.camelcase "^4.3.0"
     lodash.snakecase "^4.1.1"
@@ -335,10 +335,10 @@ mingru-tsconfig@^2.0.0:
   resolved "https://registry.yarnpkg.com/mingru-tsconfig/-/mingru-tsconfig-2.0.0.tgz#9cf8ea84d2c0d5b91480b88700f31187b473c26a"
   integrity sha512-AnSwR7zgwlveL+6Cf+TJtjm3HVwSvuIO2Kw1IhkiDMJPJMK/24VLtN6GMrGOnfFFdnbLwztx97ZbIuCr/+2hMA==
 
-mingru@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.23.0.tgz#016c09daa41e17cce35b0ef8b5b678e1fad29e09"
-  integrity sha512-BD7+vZXy+SbM5snUx4ngY/KCxcn6iCbPV17qYwDmWLUMsZ+LgdLDNUNs3KCIHZ9GHvxpbftLmBEuZ0G85/2NOg==
+mingru@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/mingru/-/mingru-0.25.0.tgz#bc16bd1d7fd8c5969a53ca5011da1af3ba4815d7"
+  integrity sha512-iUYCb7Ssn2sKHzoSq/mqVkcgpCaa2M2QeMv0okfrqglFf3/L3QwsY/NZkYUc9zGekOTjz19dpZvQF/ojG4yJNA==
   dependencies:
     chalk "^3.0.0"
     del "^5.1.0"
