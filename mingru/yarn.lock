@@ -330,10 +330,10 @@ mingru-models@^0.37.0:
     throw-if-arg-empty "^2.2.1"
     to-type-string "^1.0.2"
 
-mingru-tsconfig@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mingru-tsconfig/-/mingru-tsconfig-3.0.0.tgz#80bf22a750f668825d1ac3ce1426634fbff3ed61"
-  integrity sha512-Cz0vJz/b2itGXg6RXq8sN1yM1g/evhRd735kypVfg/W03Kqg5SFuDjGL7Z2hzuzA+IylzifxUii4UE07rCtt+w==
+mingru-tsconfig@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mingru-tsconfig/-/mingru-tsconfig-3.0.1.tgz#b50f223c6e2b39013bccd501892682e0f03b8fd1"
+  integrity sha512-BFMqbsf+s22sb4ImVqEEzzBs4cl/nTZiaGoUL7prZLVOf4NMkCYG9wZc+VfN8FR8yW6iY6KOUIMa8V9UTijz2w==
 
 mingru@^0.29.0:
   version "0.29.0"
