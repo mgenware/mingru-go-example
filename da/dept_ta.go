@@ -5,9 +5,7 @@
 
 package da
 
-import (
-	"github.com/mgenware/go-packagex/v5/dbx"
-)
+import "github.com/mgenware/mingru-go-lib"
 
 // TableTypeDept ...
 type TableTypeDept struct {
@@ -25,7 +23,7 @@ type DeptTableSelectPageResult struct {
 }
 
 // SelectPage ...
-func (da *TableTypeDept) SelectPage(queryable dbx.Queryable, page int, pageSize int) ([]*DeptTableSelectPageResult, bool, error) {
+func (da *TableTypeDept) SelectPage(queryable mingru.Queryable, page int, pageSize int) ([]*DeptTableSelectPageResult, bool, error) {
 	limit := pageSize + 1
 	offset := (page - 1) * pageSize
 	max := pageSize
