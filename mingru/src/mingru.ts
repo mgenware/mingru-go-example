@@ -1,11 +1,13 @@
 import * as mr from 'mingru';
-import tables from './models/models';
-import actions from './actions/actions';
+import tables from './models/models.js';
+import actions from './actions/actions.js';
 
 (async () => {
   const dialect = new mr.MySQL();
-  const builder = new mr.Builder(dialect, '../da/', {
-    cleanBuild: true, // Cleans build directory on each build
+  const outDir = '../da/';
+  const builder = new mr.Builder(dialect, outDir, {
+    cleanBuild: true, // Cleans build directory on each build.
+    tsOutDir: outDir + 'ts',
   });
 
   await builder.buildAsync(async () => {
