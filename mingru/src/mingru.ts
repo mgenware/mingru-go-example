@@ -6,7 +6,7 @@ import actions from './actions/actions.js';
   const dialect = new mr.MySQL();
   const outDir = '../da/';
   const builder = new mr.Builder(dialect, outDir, {
-    cleanBuild: true, // Cleans build directory on each build.
+    cleanOutDir: true, // Cleans build directory on each build.
     tsOutDir: outDir + 'ts',
   });
 
