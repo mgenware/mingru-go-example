@@ -12,14 +12,14 @@ import (
 	"github.com/mgenware/mingru-go-lib"
 )
 
-type EmploymentHistoryTAAGType struct {
+type EmploymentHistoryAGType struct {
 }
 
-var EmploymentHistoryTA = &EmploymentHistoryTAAGType{}
+var EmploymentHistory = &EmploymentHistoryAGType{}
 
 // ------------ Actions ------------
 
-type EmploymentHistoryTAAGSelectAllHistoryResult struct {
+type EmploymentHistoryAGSelectAllHistoryResult struct {
 	DepartmentName    string
 	EmployeeFirstName string
 	EmployeeLastName  string
@@ -27,7 +27,7 @@ type EmploymentHistoryTAAGSelectAllHistoryResult struct {
 	ToDate            time.Time
 }
 
-func (mrTable *EmploymentHistoryTAAGType) SelectAllHistory(mrQueryable mingru.Queryable, page int, pageSize int) ([]EmploymentHistoryTAAGSelectAllHistoryResult, bool, error) {
+func (mrTable *EmploymentHistoryAGType) SelectAllHistory(mrQueryable mingru.Queryable, page int, pageSize int) ([]EmploymentHistoryAGSelectAllHistoryResult, bool, error) {
 	if page <= 0 {
 		err := fmt.Errorf("Invalid page %v", page)
 		return nil, false, err
@@ -43,13 +43,13 @@ func (mrTable *EmploymentHistoryTAAGType) SelectAllHistory(mrQueryable mingru.Qu
 	if err != nil {
 		return nil, false, err
 	}
-	result := make([]EmploymentHistoryTAAGSelectAllHistoryResult, 0, limit)
+	result := make([]EmploymentHistoryAGSelectAllHistoryResult, 0, limit)
 	itemCounter := 0
 	defer rows.Close()
 	for rows.Next() {
 		itemCounter++
 		if itemCounter <= max {
-			var item EmploymentHistoryTAAGSelectAllHistoryResult
+			var item EmploymentHistoryAGSelectAllHistoryResult
 			err = rows.Scan(&item.FromDate, &item.ToDate, &item.EmployeeFirstName, &item.EmployeeLastName, &item.DepartmentName)
 			if err != nil {
 				return nil, false, err

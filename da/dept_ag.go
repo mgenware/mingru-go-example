@@ -11,19 +11,19 @@ import (
 	"github.com/mgenware/mingru-go-lib"
 )
 
-type DeptTAAGType struct {
+type DeptAGType struct {
 }
 
-var DeptTA = &DeptTAAGType{}
+var Dept = &DeptAGType{}
 
 // ------------ Actions ------------
 
-type DeptTAAGSelectPageResult struct {
+type DeptAGSelectPageResult struct {
 	ID   string
 	Name string
 }
 
-func (mrTable *DeptTAAGType) SelectPage(mrQueryable mingru.Queryable, page int, pageSize int) ([]DeptTAAGSelectPageResult, bool, error) {
+func (mrTable *DeptAGType) SelectPage(mrQueryable mingru.Queryable, page int, pageSize int) ([]DeptAGSelectPageResult, bool, error) {
 	if page <= 0 {
 		err := fmt.Errorf("Invalid page %v", page)
 		return nil, false, err
@@ -39,13 +39,13 @@ func (mrTable *DeptTAAGType) SelectPage(mrQueryable mingru.Queryable, page int, 
 	if err != nil {
 		return nil, false, err
 	}
-	result := make([]DeptTAAGSelectPageResult, 0, limit)
+	result := make([]DeptAGSelectPageResult, 0, limit)
 	itemCounter := 0
 	defer rows.Close()
 	for rows.Next() {
 		itemCounter++
 		if itemCounter <= max {
-			var item DeptTAAGSelectPageResult
+			var item DeptAGSelectPageResult
 			err = rows.Scan(&item.ID, &item.Name)
 			if err != nil {
 				return nil, false, err
