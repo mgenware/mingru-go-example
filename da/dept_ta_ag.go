@@ -11,24 +11,19 @@ import (
 	"github.com/mgenware/mingru-go-lib"
 )
 
-type TableTypeDept struct {
+type DeptTAAGType struct {
 }
 
-var Dept = &TableTypeDept{}
-
-// MingruSQLName returns the name of this table.
-func (mrTable *TableTypeDept) MingruSQLName() string {
-	return "departments"
-}
+var DeptTA = &DeptTAAGType{}
 
 // ------------ Actions ------------
 
-type DeptTableSelectPageResult struct {
+type DeptTAAGSelectPageResult struct {
 	ID   string
 	Name string
 }
 
-func (mrTable *TableTypeDept) SelectPage(mrQueryable mingru.Queryable, page int, pageSize int) ([]DeptTableSelectPageResult, bool, error) {
+func (mrTable *DeptTAAGType) SelectPage(mrQueryable mingru.Queryable, page int, pageSize int) ([]DeptTAAGSelectPageResult, bool, error) {
 	if page <= 0 {
 		err := fmt.Errorf("Invalid page %v", page)
 		return nil, false, err
@@ -44,13 +39,13 @@ func (mrTable *TableTypeDept) SelectPage(mrQueryable mingru.Queryable, page int,
 	if err != nil {
 		return nil, false, err
 	}
-	result := make([]DeptTableSelectPageResult, 0, limit)
+	result := make([]DeptTAAGSelectPageResult, 0, limit)
 	itemCounter := 0
 	defer rows.Close()
 	for rows.Next() {
 		itemCounter++
 		if itemCounter <= max {
-			var item DeptTableSelectPageResult
+			var item DeptTAAGSelectPageResult
 			err = rows.Scan(&item.ID, &item.Name)
 			if err != nil {
 				return nil, false, err
